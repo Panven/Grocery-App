@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,13 +26,15 @@ public class LoginActivity extends AppCompatActivity {
     TextView signUp;
 
     FirebaseAuth auth;
-
+    ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
         auth = FirebaseAuth.getInstance();
+        progressBar = findViewById(R.id.progressbar);
+        progressBar.setVisibility(View.GONE);
         signIn = findViewById(R.id.login_btn);
         email = findViewById(R.id.email_log);
         password = findViewById(R.id.pass_log);
@@ -48,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 loginUser();
-
+                progressBar.setVisibility(View.VISIBLE);
             }
 
 
@@ -80,11 +83,12 @@ public class LoginActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
 
                 if(task.isSuccessful()){
-
+                    progressBar.setVisibility(View.GONE);
                     Toast.makeText(LoginActivity.this,"Login Successfully!",Toast.LENGTH_SHORT).show();
 
                 }
                 else{
+                    progressBar.setVisibility(View.GONE);
                     Toast.makeText(LoginActivity.this,"Error: " + task.getException(),Toast.LENGTH_SHORT).show();
                 }
             }
