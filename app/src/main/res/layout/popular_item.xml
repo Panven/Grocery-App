@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="5dp"
     app:cardCornerRadius="15dp">
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="5dp">
@@ -22,6 +22,7 @@
         <!--            change to mipmap/offers3 in future-->
 
         <TextView
+            android:id="@+id/pop_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/alice"
@@ -29,6 +30,7 @@
             android:textSize="19sp"
             android:textStyle="bold"/>
         <TextView
+
             android:layout_width="190dp"
             android:layout_height="wrap_content"
             android:id="@+id/pop_des"
@@ -45,7 +47,26 @@
                 android:layout_width="70dp"
                 android:layout_height="30dp"
                 android:src="@drawable/ratingbar"
-                android:layout_marginLeft="-5dp"/>
+                android:layout_marginLeft="-5dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="5.0"
+                android:layout_weight="1"
+                android:fontFamily="@font/alice"
+                android:id="@+id/pop_rat"/>
+            <TextView
+                android:id="@+id/pop_disc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="Discount 20% Off"
+                android:textColor="@color/purple_700"
+                android:textStyle="bold"
+                android:gravity="end"
+                android:fontFamily="@font/alice"/>
         </LinearLayout>
 
     </LinearLayout>
