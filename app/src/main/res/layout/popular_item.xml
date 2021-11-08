@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="5dp"
     app:cardCornerRadius="15dp">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="5dp">
@@ -19,7 +19,7 @@
             app:riv_corner_radius="14dp"
             android:scaleType="centerCrop"
             android:src="@mipmap/newproducts"/>
-        <!--            change to mipmap/offers3 in future-->
+        <!--        TODO    change to mipmap/offers3 in future-->
 
         <TextView
             android:id="@+id/pop_name"

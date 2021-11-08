@@ -1,6 +1,7 @@
 package com.example.myapplication.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.myapplication.activities.AllViewActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.models.HomeCategoryModel;
 
@@ -36,6 +38,15 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Glide.with(context).load(categoryModelList.get(position).getImg_url()).into(holder.catImg);
         holder.name.setText(categoryModelList.get(position).getName());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, AllViewActivity.class);
+                intent.putExtra("type",categoryModelList.get(holder.getAdapterPosition()).getType());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

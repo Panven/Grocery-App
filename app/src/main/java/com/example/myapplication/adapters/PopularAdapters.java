@@ -1,6 +1,7 @@
 package com.example.myapplication.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.myapplication.activities.AllViewActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.models.PopularModel;
 
@@ -38,6 +40,15 @@ public class PopularAdapters extends RecyclerView.Adapter<PopularAdapters.ViewHo
         holder.description.setText(popularModelList.get(position).getDescription());
         holder.rating.setText(popularModelList.get(position).getRating());
         holder.discount.setText(popularModelList.get(position).getDiscount());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, AllViewActivity.class);
+                intent.putExtra("type",popularModelList.get(holder.getAdapterPosition()).getType());
+                context.startActivity(intent);
+            }
+        });
 
     }
 
