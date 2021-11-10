@@ -1,6 +1,8 @@
 package com.example.myapplication.activities;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -29,6 +31,7 @@ public class AllViewActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     FirebaseFirestore db;
     Toolbar toolbar;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,10 +42,16 @@ public class AllViewActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        progressBar = findViewById(R.id.progressbar);
+        progressBar.setVisibility(View.VISIBLE);
+
         db = FirebaseFirestore.getInstance();
         String type = getIntent().getStringExtra("type");
         recyclerView = findViewById(R.id.view_all_rec);
+        recyclerView.setVisibility(View.GONE);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+
 
         viewAllModelList = new ArrayList<>();
         viewAllAdapter = new ViewAllAdapter(this,viewAllModelList);
@@ -58,6 +67,8 @@ public class AllViewActivity extends AppCompatActivity {
                         ViewAllModel viewAllModel = documentSnapshot.toObject(ViewAllModel.class);
                         viewAllModelList.add(viewAllModel);
                         viewAllAdapter.notifyDataSetChanged();
+                        progressBar.setVisibility(View.GONE);
+                        recyclerView.setVisibility(View.VISIBLE);
                     }
                 }
             });
@@ -73,6 +84,8 @@ public class AllViewActivity extends AppCompatActivity {
                         ViewAllModel viewAllModel = documentSnapshot.toObject(ViewAllModel.class);
                         viewAllModelList.add(viewAllModel);
                         viewAllAdapter.notifyDataSetChanged();
+                        progressBar.setVisibility(View.GONE);
+                        recyclerView.setVisibility(View.VISIBLE);
                     }
                 }
             });
@@ -88,11 +101,12 @@ public class AllViewActivity extends AppCompatActivity {
                         ViewAllModel viewAllModel = documentSnapshot.toObject(ViewAllModel.class);
                         viewAllModelList.add(viewAllModel);
                         viewAllAdapter.notifyDataSetChanged();
+                        progressBar.setVisibility(View.GONE);
+                        recyclerView.setVisibility(View.VISIBLE);
 
                     }
                 }
             });
-            Toast.makeText(this,"getting fish",Toast.LENGTH_SHORT).show();
         }
 
         //Getting milk
@@ -105,6 +119,8 @@ public class AllViewActivity extends AppCompatActivity {
                         ViewAllModel viewAllModel = documentSnapshot.toObject(ViewAllModel.class);
                         viewAllModelList.add(viewAllModel);
                         viewAllAdapter.notifyDataSetChanged();
+                        progressBar.setVisibility(View.GONE);
+                        recyclerView.setVisibility(View.VISIBLE);
                     }
                 }
             });
@@ -120,6 +136,8 @@ public class AllViewActivity extends AppCompatActivity {
                         ViewAllModel viewAllModel = documentSnapshot.toObject(ViewAllModel.class);
                         viewAllModelList.add(viewAllModel);
                         viewAllAdapter.notifyDataSetChanged();
+                        progressBar.setVisibility(View.GONE);
+                        recyclerView.setVisibility(View.VISIBLE);
                     }
                 }
             });
