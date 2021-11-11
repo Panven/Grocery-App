@@ -1,7 +1,7 @@
 package com.example.myapplication.models;
 
 public class UserModel {
-    String name, email, password;
+    String name, email, password, profileImg;
 
     public UserModel() {
     }
@@ -10,6 +10,7 @@ public class UserModel {
         this.name = name;
         this.email = email;
         this.password = password;
+
     }
 
     public String getName() {
@@ -34,5 +35,13 @@ public class UserModel {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getProfileImg() {
+        return profileImg;
+    }
+
+    public void setProfileImg(String profileImg) {
+        this.profileImg = profileImg;
     }
 }
