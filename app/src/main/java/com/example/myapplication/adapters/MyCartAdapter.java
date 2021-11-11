@@ -54,8 +54,7 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.ViewHolder
         holder.quantity.setText(String.valueOf(myCartModelList.get(position).getTotalQuantity()));
         holder.totalPrice.setText(String.valueOf(myCartModelList.get(position).getTotalPrice()));
 
-        totalPrice = totalPrice + myCartModelList.get(position).getTotalPrice();
-        Intent intent = new Intent("MyTotalAmount");
+
         holder.deleteItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,9 +65,6 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.ViewHolder
                             public void onComplete(@NonNull Task<Void> task) {
 
                                 if (task.isSuccessful()){
-                                    totalPrice = totalPrice - myCartModelList.get(holder.getAdapterPosition()).getTotalPrice();
-                                    intent.putExtra("totalAmount",totalPrice);
-                                    LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
                                     myCartModelList.remove(myCartModelList.get(holder.getAdapterPosition()));
                                     notifyDataSetChanged();
                                     Toast.makeText(context, "Item Deleted", Toast.LENGTH_SHORT).show();
@@ -80,11 +76,6 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.ViewHolder
                         });
             }
         });
-
-        //pass total amount to My Cart Fragment
-        intent.putExtra("totalAmount",totalPrice);
-        LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
-
     }
 
     @Override
